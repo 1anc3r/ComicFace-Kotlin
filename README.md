@@ -16,9 +16,7 @@
 
 ## 应用界面:
 
-<img src="https://github.com/1anc3r/ComicFace-Kotlin/blob/master/screenshot/Screenshot_20170524-151110.png" width = "288" height = "512" alt="" />
-<img src="https://github.com/1anc3r/ComicFace-Kotlin/blob/master/screenshot/Screenshot_20170524-151126.png" width = "288" height = "512" alt=""/>
-<img src="https://github.com/1anc3r/ComicFace-Kotlin/blob/master/screenshot/20170524_151815.gif" width = "288" height = "512" alt=""/>
+<img src="https://github.com/1anc3r/ComicFace-Kotlin/blob/master/screenshot/Screenshot_20170524-151110.png" width = "288" height = "512" alt="" /><img src="https://github.com/1anc3r/ComicFace-Kotlin/blob/master/screenshot/Screenshot_20170524-151126.png" width = "288" height = "512" alt=""/><img src="https://github.com/1anc3r/ComicFace-Kotlin/blob/master/screenshot/20170524_151815.gif" width = "288" height = "512" alt=""/>
 
 ## 关于
 ### 组织
