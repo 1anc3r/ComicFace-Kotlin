@@ -8,7 +8,7 @@
 * Github: [![](https://img.shields.io/badge/github-1anc3r-yellowgreen.svg)](https://github.com/1anc3r)
 * 我的博客: [![](https://img.shields.io/badge/blog-1anc3r-green.svg)](http://www.1anc3r.me/)
 * 实验室主页: [![](https://img.shields.io/badge/wiki-xiyoumobile-brightgreen.svg)](http://www.xiyoumobile.com/)
-* 下载链接: [http://o7gy5l0ax.bkt.clouddn.com/comic.apk](点我下载)
+* 下载链接: [点我下载](http://o7gy5l0ax.bkt.clouddn.com/comic.apk)
 
 ## 功能介绍:
 1. 列表
