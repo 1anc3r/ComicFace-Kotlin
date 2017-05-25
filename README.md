@@ -1,8 +1,8 @@
-# 画稽(ComicFace)
+# 滑稽脸漫画(ComicFace)
 <img src="https://github.com/1anc3r/ComicFace-Kotlin/blob/master/app/src/main/ic_launcher-web.png" width = "96" height = "96" alt="icon"/>
 
 ## 应用简介:
-画稽是一个看漫画应用，取漫画的"画"、滑稽的"稽"(漫画和滑稽的英文单词都是Comic)。使用Kotlin开发，数据来自有妖气漫画。
+滑稽脸漫画是一个看漫画应用，漫画和滑稽的英文单词都是Comic。使用Kotlin开发，数据来自有妖气漫画。
 
 ## 相关链接:
 * Github: [![](https://img.shields.io/badge/github-1anc3r-yellowgreen.svg)](https://github.com/1anc3r)
