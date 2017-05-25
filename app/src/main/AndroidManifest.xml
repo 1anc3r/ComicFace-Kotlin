@@ -28,7 +28,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar.Overlay" />
         <activity
-            android:name=".mvp.chapter.activtiy.ChapterActivity"
+            android:name=".mvp.chapter.activity.ChapterActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar.Overlay" />

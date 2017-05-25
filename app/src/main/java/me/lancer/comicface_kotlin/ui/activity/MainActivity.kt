@@ -1,5 +1,6 @@
 package me.lancer.comicface_kotlin.ui.activity
 
+import android.content.Intent
 import android.support.v4.app.Fragment
 import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.activity_main.*
@@ -8,12 +9,16 @@ import me.lancer.comicface_kotlin.mvp.book.fragment.HomeFragment
 import me.lancer.comicface_kotlin.mvp.book.fragment.RankFragment
 import me.lancer.comicface_kotlin.mvp.book.fragment.SearchFragment
 import me.lancer.comicface_kotlin.ui.adapter.ViewPagerAdapter
+import android.support.v7.app.*
+import java.util.*
+import android.os.Bundle
+import android.view.*
 
-class MainActivity : android.support.v7.app.AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
-    val strings : java.util.ArrayList<Int> = arrayListOf(R.string.tab_one, R.string.tab_two, R.string.tab_three)
+    val strings: ArrayList<Int> = arrayListOf(R.string.tab_one, R.string.tab_two, R.string.tab_three)
 
-    override fun onCreate(savedInstanceState: android.os.Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         init()
@@ -32,15 +37,15 @@ class MainActivity : android.support.v7.app.AppCompatActivity() {
     }
 
 
-    override fun onCreateOptionsMenu(menu: android.view.Menu): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
 
-    override fun onOptionsItemSelected(item: android.view.MenuItem): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
         if (id == R.id.action_about) {
-            val intent = android.content.Intent(this, AboutActivity().javaClass)
+            val intent = Intent(this, AboutActivity().javaClass)
             startActivity(intent)
             return true
         }

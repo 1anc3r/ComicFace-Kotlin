@@ -4,15 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.widget.SwipeRefreshLayout
-import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import me.lancer.comicface_kotlin.R
-import me.lancer.comicface_kotlin.mvp.chapter.activtiy.ChapterActivity
-import me.lancer.comicface_kotlin.mvp.book.BookSource
+import me.lancer.comicface_kotlin.mvp.chapter.activity.ChapterActivity
+import me.lancer.comicface_kotlin.mvp.book.BookPresenter
 import me.lancer.comicface_kotlin.mvp.book.adapter.BookAdapter
 import me.lancer.comicface_kotlin.mvp.model.Book
 import me.lancer.comicface_kotlin.mvp.model.URL
@@ -80,7 +79,7 @@ class HomeFragment() : Fragment() {
 
     private fun load() {
         async() {
-            val data = BookSource().obtain(AIM_URL)
+            val data = BookPresenter().obtain(AIM_URL)
             uiThread {
                 mData = data
                 adapter.refreshData(data)

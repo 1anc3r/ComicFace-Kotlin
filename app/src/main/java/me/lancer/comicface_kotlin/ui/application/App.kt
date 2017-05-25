@@ -5,7 +5,8 @@ import android.app.Application
 import com.squareup.picasso.LruCache
 import com.squareup.picasso.Picasso
 
-class   App : Application() {
+class App : Application() {
+
     private val TAG = App::class.java.simpleName
 
     override fun onCreate() {

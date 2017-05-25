@@ -1,15 +1,13 @@
 package me.lancer.comicface_kotlin.mvp.chapter
 
-import me.lancer.comicface_kotlin.mvp.base.Source
+import me.lancer.comicface_kotlin.mvp.base.Presenter
 import me.lancer.comicface_kotlin.mvp.model.Chapter
 import me.lancer.comicface_kotlin.mvp.model.URL
 import me.lancer.comicface_kotlin.util.getHtml
-import me.lancer.comicface_kotlin.util.log
 import org.json.JSONObject
-import org.jsoup.Jsoup
 import java.util.*
 
-class ChapterSource() : Source<ArrayList<Chapter>> {
+class ChapterPresenter() : Presenter<ArrayList<Chapter>> {
 
     override fun obtain(url: String): ArrayList<Chapter> {
         val list = ArrayList<Chapter>()

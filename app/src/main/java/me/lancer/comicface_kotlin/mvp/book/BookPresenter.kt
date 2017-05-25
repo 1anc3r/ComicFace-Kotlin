@@ -1,14 +1,13 @@
 package me.lancer.comicface_kotlin.mvp.book
 
-import me.lancer.comicface_kotlin.mvp.base.Source
+import me.lancer.comicface_kotlin.mvp.base.Presenter
 import me.lancer.comicface_kotlin.mvp.model.Book
 import me.lancer.comicface_kotlin.util.getHtml
-import me.lancer.comicface_kotlin.util.log
 import org.json.JSONObject
 import me.lancer.comicface_kotlin.mvp.model.URL
 import java.util.*
 
-class BookSource() : Source<ArrayList<Book>> {
+class BookPresenter() : Presenter<ArrayList<Book>> {
 
     override fun obtain(url: String): ArrayList<Book> {
         val list = ArrayList<Book>()

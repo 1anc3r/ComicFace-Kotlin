@@ -1,6 +1,6 @@
 package me.lancer.comicface_kotlin.mvp.base
 
-interface Source<T> {
+interface Presenter<T> {
 
     fun obtain(url: String): T
 }

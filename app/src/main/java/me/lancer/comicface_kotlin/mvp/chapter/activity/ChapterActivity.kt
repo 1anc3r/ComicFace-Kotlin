@@ -1,4 +1,4 @@
-package me.lancer.comicface_kotlin.mvp.chapter.activtiy
+package me.lancer.comicface_kotlin.mvp.chapter.activity
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -11,7 +11,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_chapter.*
 import me.lancer.comicface_kotlin.R
 import me.lancer.comicface_kotlin.mvp.page.activity.PagerActivity
-import me.lancer.comicface_kotlin.mvp.chapter.ChapterSource
+import me.lancer.comicface_kotlin.mvp.chapter.ChapterPresenter
 import me.lancer.comicface_kotlin.mvp.chapter.adapter.ChapterAdapter
 import me.lancer.comicface_kotlin.mvp.model.Chapter
 import org.jetbrains.anko.async
@@ -77,7 +77,7 @@ class ChapterActivity : AppCompatActivity() {
 
     private fun load() {
         async() {
-            val data = ChapterSource().obtain(link)
+            val data = ChapterPresenter().obtain(link)
             uiThread {
                 mData = data
                 adapter.refreshData(data)

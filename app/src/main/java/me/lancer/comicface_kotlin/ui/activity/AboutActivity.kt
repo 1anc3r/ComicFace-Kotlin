@@ -12,7 +12,6 @@ import android.webkit.WebViewClient
 import android.webkit.WebSettings
 import android.webkit.WebView
 
-
 class AboutActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

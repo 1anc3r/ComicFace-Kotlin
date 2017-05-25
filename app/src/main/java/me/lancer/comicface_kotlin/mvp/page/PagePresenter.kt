@@ -1,14 +1,13 @@
 package me.lancer.comicface_kotlin.mvp.page
 
-import me.lancer.comicface_kotlin.mvp.base.Source
+import me.lancer.comicface_kotlin.mvp.base.Presenter
 import me.lancer.comicface_kotlin.mvp.model.Page
 import me.lancer.comicface_kotlin.util.getHtml
 import me.lancer.comicface_kotlin.util.log
 import org.json.JSONObject
-import org.jsoup.Jsoup
 import java.util.*
 
-class PageSource() : Source<ArrayList<Page>> {
+class PagePresenter() : Presenter<ArrayList<Page>> {
 
     override fun obtain(url: String): ArrayList<Page> {
         log(url)

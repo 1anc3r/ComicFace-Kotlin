@@ -4,26 +4,20 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.widget.SwipeRefreshLayout
-import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
-import kotlinx.android.synthetic.main.fragment_search.*
 import me.lancer.comicface_kotlin.R
-import me.lancer.comicface_kotlin.mvp.chapter.activtiy.ChapterActivity
-import me.lancer.comicface_kotlin.mvp.book.BookSource
-import me.lancer.comicface_kotlin.mvp.book.adapter.BookAdapter
+import me.lancer.comicface_kotlin.mvp.chapter.activity.ChapterActivity
+import me.lancer.comicface_kotlin.mvp.book.BookPresenter
 import me.lancer.comicface_kotlin.mvp.model.Book
 import me.lancer.comicface_kotlin.mvp.model.URL
 import org.jetbrains.anko.async
 import org.jetbrains.anko.uiThread
 import java.util.ArrayList
-import android.support.v4.widget.SearchViewCompat.setOnQueryTextListener
 import android.support.v7.widget.StaggeredGridLayoutManager
-import me.lancer.comicface_kotlin.R.id.searchView
-import android.support.v4.widget.SearchViewCompat.setOnQueryTextListener
 import me.lancer.comicface_kotlin.mvp.book.adapter.SearchAdapter
 
 
@@ -108,7 +102,7 @@ class SearchFragment() : Fragment() {
 
     private fun hotword() {
         async() {
-            val data = BookSource().hotword(AIM_URL_HOT)
+            val data = BookPresenter().hotword(AIM_URL_HOT)
             uiThread {
                 mData = data
                 adapter.refreshData(data)
@@ -119,7 +113,7 @@ class SearchFragment() : Fragment() {
 
     private fun keyword() {
         async() {
-            val data = BookSource().keyword(AIM_URL_KEY, keyword)
+            val data = BookPresenter().keyword(AIM_URL_KEY, keyword)
             uiThread {
                 mData = data
                 adapter.refreshData(data)

@@ -8,7 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter
 import kotlinx.android.synthetic.main.content_main.*
 import me.lancer.comicface_kotlin.R
 import me.lancer.comicface_kotlin.mvp.model.Page
-import me.lancer.comicface_kotlin.mvp.page.PageSource
+import me.lancer.comicface_kotlin.mvp.page.PagePresenter
 import me.lancer.comicface_kotlin.mvp.page.fragment.PageFragment
 import org.jetbrains.anko.async
 import org.jetbrains.anko.uiThread
@@ -40,7 +40,7 @@ class PagerActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         async() {
-            val data = PageSource().obtain(link)
+            val data = PagePresenter().obtain(link)
             mData = data
             uiThread {
                 adapter.refreshData(data)
