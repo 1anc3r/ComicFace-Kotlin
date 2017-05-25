@@ -4,6 +4,7 @@ import me.lancer.comicface_kotlin.mvp.base.Presenter
 import me.lancer.comicface_kotlin.mvp.model.Chapter
 import me.lancer.comicface_kotlin.mvp.model.URL
 import me.lancer.comicface_kotlin.util.getHtml
+import me.lancer.comicface_kotlin.util.log
 import org.json.JSONObject
 import java.util.*
 

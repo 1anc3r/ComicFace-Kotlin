@@ -10,7 +10,6 @@ import java.util.*
 class PagePresenter() : Presenter<ArrayList<Page>> {
 
     override fun obtain(url: String): ArrayList<Page> {
-        log(url)
         val list = ArrayList<Page>()
         val html = getHtml(url)
         val all = JSONObject(html)

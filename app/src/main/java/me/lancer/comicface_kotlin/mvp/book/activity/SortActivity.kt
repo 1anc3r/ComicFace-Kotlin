@@ -10,30 +10,33 @@ import android.view.View
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_chapter.*
 import me.lancer.comicface_kotlin.R
+import me.lancer.comicface_kotlin.mvp.book.BookPresenter
+import me.lancer.comicface_kotlin.mvp.book.adapter.BookAdapter
+import me.lancer.comicface_kotlin.mvp.book.fragment.HomeFragment
 import me.lancer.comicface_kotlin.mvp.page.activity.PagerActivity
 import me.lancer.comicface_kotlin.mvp.chapter.ChapterPresenter
 import me.lancer.comicface_kotlin.mvp.chapter.adapter.ChapterAdapter
+import me.lancer.comicface_kotlin.mvp.model.Book
 import me.lancer.comicface_kotlin.mvp.model.Chapter
+import me.lancer.comicface_kotlin.mvp.model.URL
 import org.jetbrains.anko.async
 import org.jetbrains.anko.find
 import org.jetbrains.anko.uiThread
 import java.util.ArrayList
 
-class ChapterActivity : AppCompatActivity() {
+class SortActivity : AppCompatActivity() {
 
     companion object {
         val INTENT_LINK = "link"
         val INTENT_COVER = "cover"
         val INTENT_TITLE = "title"
-        val INTENT_CATEGORY = "category"
     }
 
     lateinit var link: String
     lateinit var cover: String
     lateinit var title: String
-    lateinit var category: String
-    var mData = ArrayList<Chapter>()
-    lateinit var adapter: ChapterAdapter
+    var mData = ArrayList<Book>()
+    lateinit var adapter: BookAdapter
     lateinit var recyclerView: RecyclerView
     lateinit var swipeRefresh: SwipeRefreshLayout
 
@@ -47,7 +50,6 @@ class ChapterActivity : AppCompatActivity() {
         link = intent.getStringExtra(INTENT_LINK)
         cover = intent.getStringExtra(INTENT_COVER)
         title = intent.getStringExtra(INTENT_TITLE)
-        category = intent.getStringExtra(INTENT_CATEGORY)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         collapsingToolbar.title = title
@@ -59,13 +61,16 @@ class ChapterActivity : AppCompatActivity() {
         swipeRefresh.setOnRefreshListener { load() }
         recyclerView = find(R.id.recyclerView)
         recyclerView.layoutManager = GridLayoutManager(this, 2) as RecyclerView.LayoutManager?
-        adapter = ChapterAdapter { _: View, i: Int -> jump2Pager(i) }
+        adapter = BookAdapter { _: View, i: Int -> jump2Chapter(i) }
         recyclerView.adapter = adapter
     }
 
-    private fun jump2Pager(position: Int) {
-        var intent = Intent(this, PagerActivity().javaClass)
-        intent.putExtra(PagerActivity.INTENT_LINK, mData[position].link)
+    private fun jump2Chapter(position: Int) {
+        var intent = Intent(this, ChapterActivity().javaClass)
+        intent.putExtra(ChapterActivity.INTENT_LINK, mData[position].link)
+        intent.putExtra(ChapterActivity.INTENT_COVER, mData[position].cover)
+        intent.putExtra(ChapterActivity.INTENT_TITLE, mData[position].title)
+        intent.putExtra(ChapterActivity.INTENT_CATEGORY, mData[position].category)
         startActivity(intent)
     }
 
@@ -77,7 +82,7 @@ class ChapterActivity : AppCompatActivity() {
 
     private fun load() {
         async() {
-            val data = ChapterPresenter().obtain(link)
+            val data = BookPresenter().sortContent(link)
             uiThread {
                 mData = data
                 adapter.refreshData(data)

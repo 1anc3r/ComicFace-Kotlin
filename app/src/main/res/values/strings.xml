@@ -10,8 +10,8 @@
 
     <string name="action_about">Github</string>
     <string name="about_name">Github</string>
-    <string name="tab_one">列表</string>
+    <string name="tab_one">推荐</string>
     <string name="tab_two">排行</string>
-    <string name="tab_three">搜索</string>
+    <string name="tab_three">分类</string>
     <string name="network_error">网络加载失败，请重试！</string>
 </resources>

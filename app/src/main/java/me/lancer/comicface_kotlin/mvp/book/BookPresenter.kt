@@ -5,6 +5,7 @@ import me.lancer.comicface_kotlin.mvp.model.Book
 import me.lancer.comicface_kotlin.util.getHtml
 import org.json.JSONObject
 import me.lancer.comicface_kotlin.mvp.model.URL
+import me.lancer.comicface_kotlin.util.log
 import java.util.*
 
 class BookPresenter() : Presenter<ArrayList<Book>> {
@@ -65,9 +66,9 @@ class BookPresenter() : Presenter<ArrayList<Book>> {
                     val ranking = rankingList.get(i) as JSONObject
                     val title = ranking.getString("title")+"排行"
                     val category = ranking.getString("subTitle")
-                    val cover = ranking.getString("cover")
+//                    val cover = ranking.getString("cover")
                     val link = URL().RANK_CONTENT_URL+ranking.getInt("argValue")
-                    val bean = Book(title, category, 0, cover, link)
+                    val bean = Book(title, category, 0, "", link)
                     list.add(bean)
                     list.addAll(rankContent(link))
                     i++
@@ -106,7 +107,7 @@ class BookPresenter() : Presenter<ArrayList<Book>> {
         return list
     }
 
-    fun hotword(url: String): ArrayList<Book> {
+    fun sortTitle(url: String): ArrayList<Book> {
         val list = ArrayList<Book>()
         val html = getHtml(url)
         val all = JSONObject(html)
@@ -116,23 +117,27 @@ class BookPresenter() : Presenter<ArrayList<Book>> {
             val stateCode = data.getInt("stateCode")
             val message = data.getString("message")
             if (stateCode == 1 && message.equals("成功")) {
-                val returnData = data.getJSONArray("returnData")
+                val returnData = data.getJSONObject("returnData")
+                val rankingList = returnData.getJSONArray("rankingList")
                 var i: Int = 0
-                while (i < returnData.length()) {
-                    val comic = returnData.get(i) as JSONObject
-                    val title = comic.getString("tag")
-                    val bean = Book(title, "", 1, "", "")
+                while (i < rankingList.length()) {
+                    val ranking = rankingList.get(i) as JSONObject
+                    val title = ranking.getString("sortName")
+                    val cover = ranking.getString("cover")
+                    val link = URL().SORT_CONTENT_URL+"&argValue="+ranking.getInt("argValue")+"&argName="+ranking.getString("argName")
+                    val bean = Book(title, "", 1, cover, link)
                     list.add(bean)
                     i++
                 }
             }
+
         }
         return list
     }
 
-    fun keyword(url: String, keyword: String): ArrayList<Book> {
+    fun sortContent(url: String): ArrayList<Book> {
         val list = ArrayList<Book>()
-        val html = getHtml(url + keyword)
+        val html = getHtml(url)
         val all = JSONObject(html)
         val code = all.getInt("code")
         if (code == 1) {
@@ -140,13 +145,16 @@ class BookPresenter() : Presenter<ArrayList<Book>> {
             val stateCode = data.getInt("stateCode")
             val message = data.getString("message")
             if (stateCode == 1 && message.equals("成功")) {
-                val returnData = data.getJSONArray("returnData")
+                val returnData = data.getJSONObject("returnData")
+                val comics = returnData.getJSONArray("comics")
                 var i: Int = 0
-                while (i < returnData.length()) {
-                    val comic = returnData.get(i) as JSONObject
+                while (i < comics.length()) {
+                    val comic = comics.get(i) as JSONObject
                     val title = comic.getString("name")
-                    val link = URL().BOOK_URL + comic.getInt("comic_id")
-                    val bean = Book(title, "", 1, "", link)
+                    val category = comic.getString("description")
+                    val cover = comic.getString("cover")
+                    val link = URL().BOOK_URL + comic.getInt("comicId")
+                    val bean = Book(title, category, 1, cover, link)
                     list.add(bean)
                     i++
                 }

@@ -7,12 +7,12 @@ import kotlinx.android.synthetic.main.activity_main.*
 import me.lancer.comicface_kotlin.R
 import me.lancer.comicface_kotlin.mvp.book.fragment.HomeFragment
 import me.lancer.comicface_kotlin.mvp.book.fragment.RankFragment
-import me.lancer.comicface_kotlin.mvp.book.fragment.SearchFragment
 import me.lancer.comicface_kotlin.ui.adapter.ViewPagerAdapter
 import android.support.v7.app.*
 import java.util.*
 import android.os.Bundle
 import android.view.*
+import me.lancer.comicface_kotlin.mvp.book.fragment.SortFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         val fragments = java.util.ArrayList<Fragment>()
         fragments.add(HomeFragment())
         fragments.add(RankFragment())
-        fragments.add(SearchFragment())
+        fragments.add(SortFragment())
         val titles = strings.map(this::getString)
         viewPager.adapter = ViewPagerAdapter(fragments, titles, supportFragmentManager)
         viewPager.offscreenPageLimit = 2

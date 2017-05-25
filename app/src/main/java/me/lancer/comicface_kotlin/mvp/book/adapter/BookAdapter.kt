@@ -30,7 +30,11 @@ class BookAdapter(var data: List<Book> = ArrayList(), var itemClick: (View, Int)
         if (getItemViewType(position) == TYPE_CONTENT) {
             val book = data[position]
             itemView.tvTitle.text = book.title
-            itemView.tvCategory.text = book.category
+            if (book.category.equals("")){
+                itemView.tvCategory.setVisibility(View.GONE)
+            }else {
+                itemView.tvCategory.text = book.category
+            }
             Picasso.with(itemView.context).load(book.cover).into(itemView.ivCover)
             itemView.container.setOnClickListener {
                 itemClick(itemView, position)
@@ -47,8 +51,10 @@ class BookAdapter(var data: List<Book> = ArrayList(), var itemClick: (View, Int)
             itemView.tvCategory.setVisibility(View.GONE)
             itemView.ivIconLeft.setVisibility(View.VISIBLE)
             itemView.ivIconRight.setVisibility(View.VISIBLE)
-            Picasso.with(itemView.context).load(book.cover).into(itemView.ivIconLeft)
-            Picasso.with(itemView.context).load(book.cover).into(itemView.ivIconRight)
+            if (!book.cover.equals("")) {
+                Picasso.with(itemView.context).load(book.cover).into(itemView.ivIconLeft)
+                Picasso.with(itemView.context).load(book.cover).into(itemView.ivIconRight)
+            }
         }
     }
 
