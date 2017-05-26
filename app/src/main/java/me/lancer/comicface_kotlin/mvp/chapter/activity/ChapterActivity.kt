@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.MenuItem
 import android.view.View
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_chapter.*
@@ -50,6 +51,7 @@ class ChapterActivity : AppCompatActivity() {
         category = intent.getStringExtra(INTENT_CATEGORY)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
         collapsingToolbar.title = title
         if (!cover.equals("")) {
             Picasso.with(this).load(cover).into(imageView)
@@ -84,5 +86,16 @@ class ChapterActivity : AppCompatActivity() {
                 swipeRefresh.isRefreshing = false
             }
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+
+        if (id == android.R.id.home) {
+            onBackPressed()
+            return true
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 }
