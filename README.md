@@ -4,6 +4,8 @@
 ## 应用简介:
 滑稽脸漫画是一个看漫画应用，漫画和滑稽的英文单词都是Comic。使用Kotlin开发，数据来自有妖气漫画。
 
+Java版:[https://github.com/1anc3r/ComicFace-Java](https://github.com/1anc3r/ComicFace-Java)
+
 ## 相关链接:
 * Github: [![](https://img.shields.io/badge/github-1anc3r-yellowgreen.svg)](https://github.com/1anc3r)
 * 我的博客: [![](https://img.shields.io/badge/blog-1anc3r-green.svg)](http://www.1anc3r.me/)
@@ -11,9 +13,9 @@
 * 下载链接: [点我下载](https://raw.githubusercontent.com/1anc3r/ComicFace-Kotlin/master/screenshot/comicface.apk)
 
 ## 功能介绍:
-1. 列表
+1. 推荐
 2. 排行
-3. 搜索
+3. 分类
 
 ## 应用界面:
 
